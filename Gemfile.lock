@@ -75,6 +75,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.38.0)
       addressable
       matrix
@@ -183,6 +184,7 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
+    rolify (6.0.1)
     rubocop (1.48.1)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -264,6 +266,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  cancancan
   capybara
   debug
   htmlbeautifier
@@ -271,6 +274,7 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  rolify
   rubocop
   rufo
   selenium-webdriver
