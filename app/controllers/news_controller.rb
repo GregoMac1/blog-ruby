@@ -1,28 +1,28 @@
-class NewsController < ApplicationController
+class PostsController < ApplicationController
   #load_and_authorize_resource
-  before_action :get_new, only: [:show, :edit, :update, :destroy]
+  before_action :get_post, only: [:show, :edit, :update, :destroy]
 
-  def get_new
-    @new = New.find(params[:id])
+  def get_post
+    @post = Post.find(params[:id])
   end
 
   def index
-    @news = New.all
+    @posts = Post.all
   end
 
   def show
   end
 
   def new
-    @new = New.new
+    @post = Post.post
   end
 
   def create
-    @new = New.new(new_params)
-    if @new.save
-      redirect_to @new
+    @post = Post.post(post_params)
+    if @post.save
+      redirect_to @post
     else
-      render :new, status: :unprocessable_entity
+      render :post, status: :unprocessable_entity
     end
   end
 
@@ -30,20 +30,20 @@ class NewsController < ApplicationController
   end
 
   def update
-    if @new.update(new_params)
-      redirect_to @new
+    if @post.update(post_params)
+      redirect_to @post
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @new.destroy
-    redirect_to news_url, status: :see_other
+    @post.destroy
+    redirect_to posts_url, status: :see_other
   end
 
   private
-    def new_params
-      params.require(:new).permit(:name, :address, :phone)
+    def post_params
+      params.require(:post).permit(:title, :body)
     end
 end

@@ -27,9 +27,9 @@ class UsersController < ApplicationController
     if role == "admin"
       @user.add_role :admin
     elsif role == "manager"
-      @user.add_role :manager      
+      @user.add_role :manager
     end
-    if @user.save      
+    if @user.save
       redirect_to @user
     else
       render :new, status: :unprocessable_entity
@@ -70,5 +70,5 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:email, :name, :password, :branch_id)
-    end    
+    end
 end

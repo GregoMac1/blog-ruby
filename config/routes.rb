@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root "news#index"
-  
-  resources :news
+  root "posts#index"
+
+  resources :posts
   
   resources :users
 

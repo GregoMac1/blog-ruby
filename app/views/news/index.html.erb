@@ -2,11 +2,11 @@
   <div class="col">
     <h3>Noticias</h3>
   </div>
-  <% if can? :create, New %>
-    <div class="col" style="text-align: right;">
-      <%= link_to "Nueva", new_new_path, class: "btn btn-danger" %>
-    </div>
-  <% end %>
+  <%# if can? :create, New %>
+  <div class="col" style="text-align: right;">
+    <%= link_to "Nueva", new_post_path, class: "btn btn-danger" %>
+  </div>
+  <%# end %>
 </div>
 <hr>
 <table class="table">
@@ -19,6 +19,6 @@
     </tr>
   </thead>
   <tbody>
-    <%= render @news %>
+    <%= render @posts %>
   </tbody>
 </table>
