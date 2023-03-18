@@ -14,14 +14,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_180802) do
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "user_id", null: false
-    t.integer "new_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["new_id"], name: "index_comments_on_new_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "news", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.string "image"
@@ -39,6 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_180802) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "news", column: "new_id"
+  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
 end
