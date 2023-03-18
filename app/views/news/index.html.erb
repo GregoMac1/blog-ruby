@@ -1,2 +1,24 @@
-<h1>News#index</h1>
-<p>Find me in app/views/news/index.html.erb</p>
+<div class="row">
+  <div class="col">
+    <h3>Noticias</h3>
+  </div>
+  <% if can? :create, New %>
+    <div class="col" style="text-align: right;">
+      <%= link_to "Nueva", new_new_path, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col" style="text-align: right;">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @news %>
+  </tbody>
+</table>

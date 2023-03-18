@@ -4,46 +4,45 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:client) if self.roles.blank?
+    self.add_role(:anonymous) if self.roles.blank?
   end
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :password, presence: true, length: { minimum: 8 }
-  validates :branch_id, presence: { message: "Debe seleccionar una sucursal" }, if: :manager?
+  validates :password_digest, presence: true, length: { minimum: 8 }
 
-  def admin?
-    self.has_role? :admin
+  def editor?
+    self.has_role? :editor
   end
 
-  def manager?
-    self.has_role? :manager
+  def reader?
+    self.has_role? :reader
   end
 
   def get_role
-    if self.has_role? :admin
-      return :admin
-    elsif self.has_role? :manager
-      return :manager
+    if self.has_role? :editor
+      return :editor
+    elsif self.has_role? :reader
+      return :reader
     else
-      return :client
+      return :anonymous
     end
   end
 
   def get_role_name
     case self.get_role
-    when :admin
-      return "Administrador"
-    when :manager
-      return "Personal"
+    when :editor
+      return "Editor"
+    when :reader
+      return "Lector"
     else
-      return "Cliente"
+      return "Anónimo"
     end
   end
 
   def remove_roles
-    self.remove_role :admin
-    self.remove_role :manager
-    self.remove_role :client
+    self.remove_role :editor
+    self.remove_role :reader
+    self.remove_role :anonymous
   end
 end
