@@ -24,7 +24,7 @@
 
 ### Páginas
 
-1. **Página de inicio**: /news
+1. **Página de inicio**: /posts
 
    - Muestra la lista de noticias en la que se muestran los campos:
      - Título.
@@ -37,14 +37,14 @@
    - Muestra un botón para ocultar/mostrar cada noticia (solo para usuarios editores).
    - Muestra un botón para eliminar cada noticia que esté oculta (solo para usuarios editores).
 
-2. **Página de creación de noticia** (solo para usuarios editores): /news/new
+2. **Página de creación de noticia** (solo para usuarios editores): /posts/post
 
    - Muestra un formulario para crear una noticia con los campos:
      - Título.
      - Cuerpo.
    - Muestra un botón para crear la noticia.
 
-3. **Página de una noticia**: /news/:id
+3. **Página de una noticia**: /posts/:id
 
    - Muestra el título de la noticia.
    - Muestra el autor de la noticia.
@@ -59,7 +59,7 @@
    - Muestra un botón para ocultar/mostrar la noticia (solo para usuarios editores).
    - Muestra un botón para eliminar la noticia si está oculta (solo para usuarios editores).
 
-4. **Página de edición de noticia** (solo para usuarios editores): /news/:id/edit
+4. **Página de edición de noticia** (solo para usuarios editores): /posts/:id/edit
 
    - Muestra el título de la noticia.
    - Muestra el autor de la noticia.
