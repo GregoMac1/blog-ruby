@@ -12,9 +12,7 @@
     </div>
   <% end %>
 </div>
-
 <hr>
-
 <p>
   <strong>Nombre:</strong>
   <%= @branch.name %>
@@ -27,9 +25,7 @@
   <strong>Teléfono:</strong>
   <%= @branch.phone %>
 </p>
-
 <br>
-
 <div class="row">
   <div class="col">
     <h4>Horarios</h4>
@@ -40,9 +36,7 @@
     </div>
   <% end %>
 </div>
-
 <hr>
-
 <table class="table">
   <thead>
     <tr>
@@ -58,9 +52,7 @@
     <%= render @branch.schedules %>
   </tbody>
 </table>
-
 <br>
-
 <div class="text-center">
   <%= link_to "Volver", branches_path, class: "btn btn-secondary" %>
 </div>

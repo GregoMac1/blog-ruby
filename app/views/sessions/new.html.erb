@@ -1,7 +1,5 @@
 <h3>Iniciar sesión</h3>
-
 <hr>
-
 <%= form_with url: sign_in_path do |form| %>
   <div class="mb-3">
     <%= form.label "Correo electrónico", class: "form-label" %>
@@ -15,7 +13,6 @@
     <%= form.submit class: "btn btn-danger", value: "Iniciar sesión" %>
   </div>
 <% end %>
-
 <div class="text-center">
   <%= link_to "Registrarse", sign_up_path, class: "link-secondary" %>
 </div>
