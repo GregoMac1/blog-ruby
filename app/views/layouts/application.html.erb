@@ -53,38 +53,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav ms-auto">
             <ul class="navbar-nav navbar-right me-auto mb-2 mb-lg-0">
-              <% if Current.user %> <% if Current.user.has_role? :client %>
               <li class="nav-item">
-                <a class="nav-link" href=<%= turns_path %>>Mis turnos</a>
+                <a class="nav-link" href=<%= posts_path %>>Noticias</a>
               </li>
+              <% if Current.user %>
+              <% if Current.user.has_role? :client %>
               <% else %> <% if Current.user.has_role? :manager %>
-              <li class="nav-item">
-                <a class="nav-link" href=<%= attend_path %>>Atender</a>
-              </li>
-              <% end %>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Gestionar
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <li>
-                    <a class="dropdown-item" href=<%= branches_path %>>Sucursales</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href=<%= users_path %>>Usuarios</a>
-                  </li>
-                </ul>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=<%= attend_path %>>Atender</a>
+                </li>
+                <% end %>
               <% end %>
               <li class="nav-item dropdown">
                 <a

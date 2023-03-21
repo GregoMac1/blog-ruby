@@ -1,58 +1,35 @@
 <div class="row">
   <div class="col">
-    <h3>Sucursal</h3>
+    <h3><%= @post.title %></h3>
   </div>
-  <% if can? :manage, @branch %>
-    <div class="col" style="text-align: right;">
-      <%= link_to "Editar", edit_branch_path(@branch), class: "btn btn-warning" %>
-      <%= link_to "Borrar", branch_path(@branch), class: "btn btn-danger", data: {
+  <%# if can? :manage, @post %>
+  <div class="col" style="text-align: right;">
+    <%= link_to "Editar", edit_post_path(@post), class: "btn btn-warning" %>
+    <%= link_to "Borrar", post_path(@post), class: "btn btn-danger", data: {
         turbo_method: "delete",
         turbo_confirm: "¿Estás seguro?"
       } %>
-    </div>
-  <% end %>
+  </div>
+  <%# end %>
 </div>
 <hr>
-<p>
-  <strong>Nombre:</strong>
-  <%= @branch.name %>
-</p>
-<p>
-  <strong>Dirección:</strong>
-  <%= @branch.address %>
-</p>
-<p>
-  <strong>Teléfono:</strong>
-  <%= @branch.phone %>
-</p>
-<br>
+<div class="row" style="width: 75%; margin: 0 auto;">
+  <%= image_tag @post.image_url if @post.image %>
+</div>
+<hr>
 <div class="row">
   <div class="col">
-    <h4>Horarios</h4>
+    <small class="text-muted">
+      Publicada el
+      <%= @post.created_at.strftime("%d/%m/%Y %H:%M") %>
+      por <%= User.find(@post.created_by).name %>
+    </small>
   </div>
-  <% if can? :create, Schedule %>
-    <div class="col" style="text-align: right;">
-      <%= link_to "Agregar", new_branch_schedule_path(@branch), class: "btn btn-danger" %>
-    </div>
-  <% end %>
+</div>
+<div class="row" style="padding: 0 10px; white-space: pre-line;">
+  <%= @post.body %>
 </div>
 <hr>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Día</th>
-      <th scope="col">Hora de apertura</th>
-      <th scope="col">Hora de cierre</th>
-      <% if can? :manage, @branch %>
-        <th scope="col" style="text-align: right;">Acciones</th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @branch.schedules %>
-  </tbody>
-</table>
-<br>
 <div class="text-center">
-  <%= link_to "Volver", branches_path, class: "btn btn-secondary" %>
+  <%= link_to "Volver", posts_path, class: "btn btn-secondary" %>
 </div>

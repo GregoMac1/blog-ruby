@@ -14,8 +14,14 @@
     <%= form.text_field :title, class: "form-control", placeholder: "Ingrese el título..." %>
   </div>
   <div class="mb-3">
+    <%= form.label :image, class: "form-label" %>
+    <%= image_tag form.object.image_url if form.object.cached_image_data %>
+    <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+  <div class="mb-3">
     <%= form.label :body, class: "form-label" %>
-    <%= form.text_field :body, class: "form-control", placeholder: "Ingrese el cuerpo..." %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Ingrese el cuerpo...", rows: 10 %>
   </div>
   <div class="text-center">
     <%= form.submit class: "btn btn-danger" %>

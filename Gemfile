@@ -11,6 +11,9 @@ gem "solargraph"
 gem "rolify"
 gem "cancancan"
 
+gem "shrine", "~> 3.3"
+gem "image_processing", "~> 1.12", ">= 1.12.1"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 

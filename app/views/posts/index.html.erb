@@ -2,23 +2,13 @@
   <div class="col">
     <h3>Noticias</h3>
   </div>
-  <%# if can? :create, New %>
+  <%# if can? :create, Post %>
   <div class="col" style="text-align: right;">
-    <%= link_to "Nueva", new_post_path, class: "btn btn-danger" %>
+    <%= link_to "Redactar", new_post_path, class: "btn btn-danger" %>
   </div>
   <%# end %>
 </div>
 <hr>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Dirección</th>
-      <th scope="col">Teléfono</th>
-      <th scope="col" style="text-align: right;">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @posts %>
-  </tbody>
-</table>
+<div class="card-group">
+  <%= render @posts %>
+</div>

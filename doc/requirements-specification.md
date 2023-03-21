@@ -37,7 +37,7 @@
    - Muestra un botón para ocultar/mostrar cada noticia (solo para usuarios editores).
    - Muestra un botón para eliminar cada noticia que esté oculta (solo para usuarios editores).
 
-2. **Página de creación de noticia** (solo para usuarios editores): /posts/post
+2. **Página de creación de noticia** (solo para usuarios editores): /posts/new
 
    - Muestra un formulario para crear una noticia con los campos:
      - Título.

@@ -1,7 +1,7 @@
 es:
   activerecord:
     models:
-      post: Sucursal
+      post: Noticia
       comment: Comentario
       user: Usuario
     attributes:

@@ -1,0 +1,15 @@
+<%= link_to post_path(post), class: "card post-card", data: { turbo: false } do %>
+  <div class="card-image">
+    <%= image_tag(post.image_url, class: "card-img-top") %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= User.find(post.created_by).name %></h6>
+    <p class="card-text"><%= post.body.truncate(150) %></p>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">
+      Publicada el <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
+    </small>
+  </div>
+<% end %>
