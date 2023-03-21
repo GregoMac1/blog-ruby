@@ -26,31 +26,30 @@
 
 1. **Página de inicio**: /posts
 
-   - Muestra la lista de noticias en la que se muestran los campos:
+   - Muestra la lista de noticias en la que se muestran los datos:
      - Título.
+     - Imagen.
      - Autor.
      - Fecha de creación.
-     - Fecha de última modificación.
    - Muestra un enlace en el título de cada noticia a la página de la noticia.
    - Muestra un botón para crear una noticia (solo para usuarios editores).
-   - Muestra un botón para editar cada noticia (solo para usuarios editores).
-   - Muestra un botón para ocultar/mostrar cada noticia (solo para usuarios editores).
-   - Muestra un botón para eliminar cada noticia que esté oculta (solo para usuarios editores).
 
 2. **Página de creación de noticia** (solo para usuarios editores): /posts/new
 
    - Muestra un formulario para crear una noticia con los campos:
      - Título.
+     - Imagen.
      - Cuerpo.
    - Muestra un botón para crear la noticia.
 
 3. **Página de una noticia**: /posts/:id
 
    - Muestra el título de la noticia.
+   - Muestra la imagen de la noticia.
    - Muestra el autor de la noticia.
    - Muestra el cuerpo de la noticia.
    - Muestra la fecha de creación de la noticia.
-   - Muestra la fecha de última modificación de la noticia.
+   - Muestra la fecha de última modificación de la noticia y el usuario que la modificó por última vez.
    - Muestra un indicador si otro usuario acaba de editar la noticia.
    - Muestra la lista de comentarios de la noticia.
    - Muestra un formulario para crear un comentario (sólo para usuarios lectores).

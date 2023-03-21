@@ -2,15 +2,24 @@
   <div class="col">
     <h3><%= @post.title %></h3>
   </div>
-  <%# if can? :manage, @post %>
-  <div class="col" style="text-align: right;">
-    <%= link_to "Editar", edit_post_path(@post), class: "btn btn-warning" %>
-    <%= link_to "Borrar", post_path(@post), class: "btn btn-danger", data: {
-        turbo_method: "delete",
-        turbo_confirm: "¿Estás seguro?"
-      } %>
-  </div>
-  <%# end %>
+  <% if can? :manage, @post %>
+    <div class="col" style="text-align: right;">
+      <%= link_to "Editar", edit_post_path(@post), class: "btn btn-warning" %>
+      <% if @post.is_hidden %>
+        <%= link_to "Mostrar", unhide_post_path(@post), class: "btn btn-warning", data: {
+          turbo_method: "put"
+        } %>
+        <%= link_to "Borrar", post_path(@post), class: "btn btn-danger", data: {
+          turbo_method: "delete",
+          turbo_confirm: "¿Estás seguro?"
+        } %>
+      <% else %>
+        <%= link_to "Ocultar", hide_post_path(@post), class: "btn btn-warning", data: {
+          turbo_method: "put"
+        } %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <hr>
 <div class="row" style="width: 75%; margin: 0 auto;">
@@ -23,6 +32,11 @@
       Publicada el
       <%= @post.created_at.strftime("%d/%m/%Y %H:%M") %>
       por <%= User.find(@post.created_by).name %>
+    </small>
+    <br>
+    <small class="text-muted">
+      Modificada el <%= @post.updated_at.strftime("%d/%m/%Y %H:%M") %>
+      por <%= User.find(@post.last_updated_by).name %>
     </small>
   </div>
 </div>

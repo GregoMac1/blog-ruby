@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   before_action :get_post, only: [:show, :edit, :update, :destroy]
 
   def get_post
@@ -7,7 +7,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    if current_user.editor?
+      @posts = Post.all
+    else
+      @posts = Post.where(is_hidden: false)
+    end
+    @posts = @posts.order(created_at: :desc)
   end
 
   def show
@@ -20,6 +25,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.created_by = current_user.id
+    @post.last_updated_by = current_user.id
     if @post.save
       redirect_to @post
     else
@@ -31,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post.last_updated_by = current_user.id
     if @post.update(post_params)
       redirect_to @post
     else
@@ -41,6 +48,20 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_url, status: :see_other
+  end
+
+  def hide
+    @post = Post.find(params[:id])
+    @post.is_hidden = true
+    @post.save
+    redirect_to @post
+  end
+
+  def unhide
+    @post = Post.find(params[:id])
+    @post.is_hidden = false
+    @post.save
+    redirect_to @post
   end
 
   private

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts
+  put "posts/:id/hide", to: "posts#hide", as: "hide_post"
+  put "posts/:id/unhide", to: "posts#unhide", as: "unhide_post"
   
   resources :users
 

@@ -2,11 +2,11 @@
   <div class="col">
     <h3>Noticias</h3>
   </div>
-  <%# if can? :create, Post %>
-  <div class="col" style="text-align: right;">
-    <%= link_to "Redactar", new_post_path, class: "btn btn-danger" %>
-  </div>
-  <%# end %>
+  <% if can? :create, Post %>
+    <div class="col" style="text-align: right;">
+      <%= link_to "Redactar", new_post_path, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </div>
 <hr>
 <div class="card-group">

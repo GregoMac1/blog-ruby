@@ -57,13 +57,6 @@
                 <a class="nav-link" href=<%= posts_path %>>Noticias</a>
               </li>
               <% if Current.user %>
-              <% if Current.user.has_role? :client %>
-              <% else %> <% if Current.user.has_role? :manager %>
-                <li class="nav-item">
-                  <a class="nav-link" href=<%= attend_path %>>Atender</a>
-                </li>
-                <% end %>
-              <% end %>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -100,7 +93,8 @@
     <div class="container-sm" id="content">
       <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
-      <% end %> <% if alert %>
+      <% end %>
+      <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
       <% end %> <%= yield %>
     </div>
