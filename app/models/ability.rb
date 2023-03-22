@@ -2,6 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :read, Post, is_hidden: false
+    
     return unless user.present?
     can :create, Comment
 

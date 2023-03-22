@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    if current_user.editor?
+    if current_user && current_user.editor?
       @posts = Post.all
     else
       @posts = Post.where(is_hidden: false)
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    post_params[:image].open #fixes bug on Windows
     @post = Post.new(post_params)
     @post.created_by = current_user.id
     @post.last_updated_by = current_user.id
