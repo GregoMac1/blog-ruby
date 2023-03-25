@@ -10,10 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, alert: "No tiene permisos para acceder a esta página."
+    flash[:danger] = "No tiene permisos para acceder a esta página."
+    redirect_to root_path
   end
 
   def require_user_not_logged_in!
-    redirect_to root_path, notice: "Ya ha iniciado sesión." unless Current.user.nil?
+    if Current.user != nil
+      flash[:success] = "Ya ha iniciado sesión."
+      redirect_to root_path
+    end
   end
 end

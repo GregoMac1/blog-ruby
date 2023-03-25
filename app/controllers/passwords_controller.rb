@@ -4,9 +4,11 @@ class PasswordsController < ApplicationController
 
   def update
     if Current.user.update(password_params)
-      redirect_to root_path, notice: "Se ha actualizado la contraseña."
+      flash[:success] = "Se ha actualizado la contraseña."
+      redirect_to root_path
     else
-      redirect_to edit_password_path, alert: "Ocurrió un error al actualizar la contraseña."
+      flash[:danger] = "Ocurrió un error al actualizar la contraseña."
+      redirect_to edit_password_path
     end
   end
 

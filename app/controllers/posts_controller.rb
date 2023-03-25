@@ -23,14 +23,22 @@ class PostsController < ApplicationController
   end
 
   def create
-    post_params[:image].open #fixes bug on Windows
+    begin
+      post_params[:image].open #fixes bug on Windows
+    rescue
+    end
+    if (post_params[:image] == nil) || (post_params[:image] == "")
+      flash.now[:danger] = "Por favor, seleccione una imagen válida."
+      render :new, status: :unprocessable_entity
+      return
+    end
     @post = Post.new(post_params)
     @post.created_by = current_user.id
     @post.last_updated_by = current_user.id
     if @post.save
       redirect_to @post
     else
-      render :post, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,6 +46,15 @@ class PostsController < ApplicationController
   end
 
   def update
+    begin
+      post_params[:image].open #fixes bug on Windows
+    rescue
+    end
+    if (post_params[:image] == nil) || (post_params[:image] == "")
+      flash.now[:danger] = "Por favor, seleccione una imagen válida."
+      render :edit, status: :unprocessable_entity
+      return
+    end
     @post.last_updated_by = current_user.id
     if @post.update(post_params)
       redirect_to @post

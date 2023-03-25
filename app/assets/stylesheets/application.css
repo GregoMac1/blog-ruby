@@ -40,10 +40,32 @@ body {
   text-decoration: none;
   color: black;
   transition: box-shadow 0.3s;
+  min-width: 32%;
+  max-width: 34%;
+  border: 1px solid #ccc !important;
+  border-radius: 10px !important;
 }
 
 .post-card:hover {
   text-decoration: none;
   color: black;
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.3);
+}
+
+.post-card img {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0 !important;
+}
+
+@media (max-width: 768px) {
+  .post-card {
+    width: 100%;
+    min-width: 49%;
+    max-width: 100%;
+  }
+  .post-card img {
+    height: 40vw;
+  }
 }

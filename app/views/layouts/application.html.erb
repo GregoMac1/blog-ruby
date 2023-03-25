@@ -91,12 +91,10 @@
       </div>
     </nav>
     <div class="container-sm" id="content">
-      <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+      <% flash.each do |key, value| %>
+        <p class="alert alert-<%= key %>"><%= value %></p>
       <% end %>
-      <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-      <% end %> <%= yield %>
+      <%= yield %>
     </div>
     <div id="footer">Gregorio Maclen - TTPS Ruby 2022</div>
   </body>
