@@ -14,9 +14,14 @@
     <%= form.text_field :title, class: "form-control", placeholder: "Ingrese el título..." %>
   </div>
   <div class="mb-3">
-    <%= form.label :image, class: "form-label" %>
-    <%= image_tag form.object.image_url if form.object.cached_image_data %>
-    <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <%= form.label :image, class: "form-label" %><br>
+    <% if form.object.image_data? %>
+      <%= image_tag form.object.image_url, class: "img-fluid", style: "max-height: 500px; margin-bottom: 10px; border-radius: 10px;" %>
+      <%= form.hidden_field :image, value: form.object.image_data %>
+    <% elsif form.object.cached_image_data %>
+      <%= image_tag form.object.image_url, class: "img-fluid", style: "max-height: 500px; margin-bottom: 10px; border-radius: 10px;" %>
+      <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <% end %>
     <%= form.file_field :image, class: "form-control" %>
   </div>
   <div class="mb-3">
