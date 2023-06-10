@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
   root "posts#index"
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   put "posts/:id/hide", to: "posts#hide", as: "hide_post"
   put "posts/:id/unhide", to: "posts#unhide", as: "unhide_post"
   
   resources :users
-
-  get "attend", to: "attend#index"
-  post "attend/:id", to: "attend#attend", as: "attend_turn"
   
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"

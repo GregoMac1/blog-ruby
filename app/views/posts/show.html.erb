@@ -44,7 +44,9 @@
   <%= @post.body %>
 </div>
 <hr>
-<h2>Comentarios</h2>
+<h5>Comentarios</h5>
+<%= render @post.comments %>
+<%= render partial: "comments/form" %>
 <div class="text-center">
   <%= link_to "Volver", posts_path, class: "btn btn-secondary" %>
 </div>
