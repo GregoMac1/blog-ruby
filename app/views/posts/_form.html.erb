@@ -9,6 +9,23 @@
       </ul>
     </div>
   <% end %>
+  <% if @post.created_at %>
+    <div class="row">
+      <div class="col">
+        <small class="text-muted">
+          Publicada el
+          <%= @post.created_at.strftime("%d/%m/%Y %H:%M") %>
+          por <%= User.find(@post.created_by).name %>
+        </small>
+        <br>
+        <small class="text-muted">
+          Modificada el <%= @post.updated_at.strftime("%d/%m/%Y %H:%M") %>
+          por <%= User.find(@post.last_updated_by).name %>
+        </small>
+      </div>
+    </div>
+    <br>
+  <% end %>
   <div class="mb-3">
     <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control", placeholder: "Ingrese el título..." %>

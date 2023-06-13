@@ -1,6 +1,6 @@
 <%= form_with model: [ @post, @comment ], html: { autocomplete: "off" } do |form| %>
   <div class="form-inline" style="display: flex; justify-content: space-between; margin: 35px 0px 15px 0px;">
-    <%= form.text_field :body, class: "form-control", placeholder: "Ingrese un comentario..." %>
-    <%= form.submit class: "btn btn-danger mb-2", value: "Comentar", style: "margin: 0px 0px 0px 5px !important;" %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Escriba un comentario...", rows: 3 %>
+    <%= form.submit class: "btn btn-danger mb-2", value: "Comentar", style: "margin: 0px 0px 0px 5px !important; max-height: 38px;" %>
   </div>
 <% end %>

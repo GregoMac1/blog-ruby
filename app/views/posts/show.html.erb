@@ -22,7 +22,7 @@
   <% end %>
 </div>
 <hr>
-<div class="row" style="width: 75%; margin: 0 auto;">
+<div class="row" style="width: 75%; margin: 0 auto; max-height: 500px; max-width: 500px;">
   <%= image_tag @post.image_url if @post.image %>
 </div>
 <hr>
@@ -40,13 +40,18 @@
     </small>
   </div>
 </div>
-<div class="row" style="padding: 0 10px; white-space: pre-line;">
+<div class="row" style="padding: 0 10px; white-space: pre-line; text-align: justify; text-justify: inter-word;">
   <%= @post.body %>
 </div>
 <hr>
 <h5>Comentarios</h5>
+<% if @post.comments.empty? %>
+  <p class="text-muted">No hay comentarios</p>
+<% end %>
 <%= render @post.comments %>
-<%= render partial: "comments/form" %>
+<% if can? :create, Comment %>
+  <%= render partial: "comments/form" %>
+<% end %>
 <div class="text-center">
   <%= link_to "Volver", posts_path, class: "btn btn-secondary" %>
 </div>

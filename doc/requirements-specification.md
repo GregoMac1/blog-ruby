@@ -52,7 +52,7 @@
    - Muestra la fecha de última modificación de la noticia y el usuario que la modificó por última vez.
    - Muestra un indicador si otro usuario acaba de editar la noticia.
    - Muestra la lista de comentarios de la noticia.
-   - Muestra un formulario para crear un comentario (sólo para usuarios lectores).
+   - Muestra un formulario para crear un comentario (sólo para usuarios lectores o editores).
    - Muestra un indicador si otro usuario está escribiendo un comentario.
    - Muestra un botón para editar la noticia (solo para usuarios editores).
    - Muestra un botón para ocultar/mostrar la noticia (solo para usuarios editores).
@@ -60,14 +60,12 @@
 
 4. **Página de edición de noticia** (solo para usuarios editores): /posts/:id/edit
 
-   - Muestra el título de la noticia.
    - Muestra el autor de la noticia.
-   - Muestra el cuerpo de la noticia.
    - Muestra la fecha de creación de la noticia.
    - Muestra la fecha de última modificación de la noticia.
-   - Muestra un indicador si otro usuario editor está editando la noticia.
    - Muestra un formulario para editar la noticia con los campos:
      - Título.
+     - Imagen.
      - Cuerpo.
    - Muestra un botón para guardar los cambios.
 
