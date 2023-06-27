@@ -22,9 +22,11 @@ class CommentsController < ApplicationController
     params[:comment][:post_id] = @post.id
     params[:comment][:user_id] = current_user.id
     @comment = @post.comments.create(comment_params)
-    puts @comment.inspect
+    # ActionCable.server.broadcast "post_#{@post}", render(partial: 'comments/comment',
+      # locals: { comment: @comment, current_user: current_user })
+    ActionCable.server.broadcast "post_#{@post.id}", {message: "hello"}
     if @comment.save
-      redirect_to @post
+      #redirect_to @post
     else
       flash[:danger] = "El comentario no puede estar vacío."
       redirect_to @post
