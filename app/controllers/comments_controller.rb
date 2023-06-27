@@ -24,10 +24,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.create(comment_params)
     if @comment.save
       ActionCable.server.broadcast "post_#{@post.id}", {
-        action: 'new_comment',
+        action: "new_comment",
         comment: @comment,
         html: render_to_string(
-          partial: 'comments/comment',
+          partial: "comments/comment",
           locals: { comment: @comment }
         ),
         current_user: current_user.id
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
 
   def typing
     ActionCable.server.broadcast "post_#{params[:post_id]}", {
-      action: 'typing',
+      action: "typing",
       enabled: params[:typing],
       user_id: current_user.id,
       user_name: current_user.name

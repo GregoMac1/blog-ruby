@@ -1,3 +1,7 @@
 <h3>Editar noticia</h3>
 <hr>
+<div id="editing" data-controller="post-editing" data-post-id="<%= @post.id %>" data-current-user="<%= Current.user.id %>">
+  <p id="editing-indicator" class="alert alert-warning" style="display: none;"></p>
+  <p id="updated-indicator" class="alert alert-warning" style="display: none;"></p>
+</div>
 <%= render "form", post: @post %>

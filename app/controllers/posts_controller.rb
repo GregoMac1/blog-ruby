@@ -40,10 +40,10 @@ class PostsController < ApplicationController
     @post.last_updated_by = current_user.id
     if @post.save
       ActionCable.server.broadcast "posts", {
-        action: 'new_post',
+        action: "new_post",
         post: @post,
         html: render_to_string(
-          partial: 'posts/post',
+          partial: "posts/post",
           locals: { post: @post }
         ),
       }
@@ -54,6 +54,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    ActionCable.server.broadcast "post_#{params[:id]}", {
+      action: "editing",
+      enabled: true,
+      user_id: current_user.id,
+      user_name: current_user.name
+    }
   end
 
   def update
@@ -68,7 +74,11 @@ class PostsController < ApplicationController
     end
     @post.last_updated_by = current_user.id
     if @post.update(post_params)
-      redirect_to @post
+      ActionCable.server.broadcast "post_#{params[:id]}", {
+        action: "updated",
+        user_name: current_user.name
+      }
+      redirect_to posts_url
     else
       render :edit, status: :unprocessable_entity
     end
