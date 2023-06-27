@@ -26,9 +26,18 @@ class CommentsController < ApplicationController
       ActionCable.server.broadcast "post_#{@post.id}", {
         action: 'new_comment',
         comment: @comment,
+        html: render(
+          partial: 'comments/comment',
+          locals: { comment: @comment }
+        ),
+        current_user: current_user.id
       }
     else
-      flash[:danger] = "El comentario no puede estar vacío."
+      if @comment.body.empty?
+        flash[:danger] = "El comentario no puede estar vacío."
+      else
+        flash[:danger] = "Se ha producido un error."
+      end
       redirect_to @post
     end
   end

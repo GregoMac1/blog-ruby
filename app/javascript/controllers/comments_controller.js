@@ -20,7 +20,9 @@ export default class extends Controller {
           console.log(data);
           switch (data.action) {
             case "new_comment":
-              commentsBlock.insertAdjacentHTML("beforeend", data.comment);
+              commentsBlock.insertAdjacentHTML("beforeend", data.html);
+              if (data.current_user === data.comment.user_id)
+                document.getElementById("comment-body-input").value = "";
               break;
             case "is_typing":
               this.element.querySelector(
