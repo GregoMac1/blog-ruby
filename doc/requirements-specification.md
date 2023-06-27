@@ -50,7 +50,6 @@
    - Muestra el cuerpo de la noticia.
    - Muestra la fecha de creación de la noticia.
    - Muestra la fecha de última modificación de la noticia y el usuario que la modificó por última vez.
-   - Muestra un indicador si otro usuario acaba de editar la noticia.
    - Muestra la lista de comentarios de la noticia.
    - Muestra un formulario para crear un comentario (sólo para usuarios lectores o editores).
    - Muestra un indicador si otro usuario está escribiendo un comentario.
@@ -63,38 +62,21 @@
    - Muestra el autor de la noticia.
    - Muestra la fecha de creación de la noticia.
    - Muestra la fecha de última modificación de la noticia.
+   - Muestra un indicador si otro usuario está editando la noticia.
    - Muestra un formulario para editar la noticia con los campos:
      - Título.
      - Imagen.
      - Cuerpo.
    - Muestra un botón para guardar los cambios.
 
-5. **Página de conversaciones**: /chat
-
-   - Muestra la lista de conversaciones en la que se muestran los campos:
-     - Nombre del otro usuario.
-     - Estado (conectado/desconectado).
-     - Último mensaje.
-     - Fecha del último mensaje.
-   - Muestra un enlace en el nombre de cada conversación a la página de la conversación.
-   - Muestra un botón para crear una conversación.
-
-6. **Página de una conversación**: /chat/:id
-
-   - Muestra el nombre del otro usuario.
-   - Muestra el estado (conectado/desconectado).
-   - Muestra la lista de mensajes de la conversación.
-   - Muestra un campo para escribir un mensaje.
-   - Muestra un indicador si otro usuario está escribiendo un mensaje.
-
 ### Uso de WebSockets
 
 Se utilizarán WebSockets para notificar a los usuarios de los siguientes eventos:
 
-- Un usuario está escribiendo un comentario.
+- Un usuario publicó una noticia.
+- Un usuario empieza a escribir un comentario.
+- Un usuario deja de escribir un comentario.
 - Un usuario escribió un comentario.
 - Un usuario está editando una noticia.
+- Un usuario dejó de editar una noticia.
 - Un usuario editó una noticia.
-- Un usuario se ha conectado/desconectado.
-- Un usuario está escribiendo un mensaje.
-- Un usuario escribió un mensaje.

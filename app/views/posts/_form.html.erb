@@ -39,7 +39,7 @@
       <%= image_tag form.object.image_url, class: "img-fluid", style: "max-height: 500px; margin-bottom: 10px; border-radius: 10px;" %>
       <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <% end %>
-    <%= form.file_field :image, class: "form-control" %>
+    <%= form.file_field :image, class: "form-control", accept: "image/png, image/jpeg, image/jpg" %>
   </div>
   <div class="mb-3">
     <%= form.label :body, class: "form-label" %>

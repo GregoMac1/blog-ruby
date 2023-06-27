@@ -39,6 +39,14 @@ class PostsController < ApplicationController
     @post.created_by = current_user.id
     @post.last_updated_by = current_user.id
     if @post.save
+      ActionCable.server.broadcast "posts", {
+        action: 'new_post',
+        post: @post,
+        html: render(
+          partial: 'posts/post',
+          locals: { post: @post }
+        ),
+      }
       redirect_to @post
     else
       render :new, status: :unprocessable_entity
