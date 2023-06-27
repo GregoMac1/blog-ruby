@@ -5,7 +5,7 @@ class Ability
     can :read, Post, is_hidden: false
     
     return unless user.present?
-    can :create, Comment
+    can :manage, Comment
 
     if user.editor?
       can :manage, Post

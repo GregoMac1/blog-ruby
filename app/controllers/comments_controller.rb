@@ -42,6 +42,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def typing
+    ActionCable.server.broadcast "post_#{params[:post_id]}", {
+      action: 'typing',
+      enabled: params[:typing],
+      user_id: current_user.id,
+      user_name: current_user.name
+    }
+  end
+
   private
 
   def comment_params

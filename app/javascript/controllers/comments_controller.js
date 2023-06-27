@@ -13,26 +13,27 @@ export default class extends Controller {
         post_id: postId,
       },
       {
-        connected: () => {
-          console.log(`Connected to ${postId}`);
-        },
         received: (data) => {
-          console.log(data);
           switch (data.action) {
             case "new_comment":
-              commentsBlock.insertAdjacentHTML("beforeend", data.html);
+              const commentsList = document.getElementById("comments-list");
+              commentsList.insertAdjacentHTML("beforeend", data.html);
               if (data.current_user === data.comment.user_id)
                 document.getElementById("comment-body-input").value = "";
               break;
-            case "is_typing":
-              this.element.querySelector(
-                `#comment-${data.comment_id} .typing-indicator`
-              ).style.display = "block";
-              break;
-            case "not_typing":
-              this.element.querySelector(
-                `#comment-${data.comment_id} .typing-indicator`
-              ).style.display = "none";
+            case "typing":
+              const current_user =
+                commentsBlock.getAttribute("data-current-user");
+              if (current_user === String(data.user_id)) return;
+
+              const typingIndicator =
+                document.getElementById("typing-indicator");
+              if (data.enabled) {
+                typingIndicator.innerHTML = `${data.user_name} está escribiendo un comentario...`;
+                typingIndicator.style.display = "block";
+              } else {
+                typingIndicator.style.display = "none";
+              }
               break;
           }
         },
