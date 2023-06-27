@@ -1,24 +1,35 @@
-# README
+## Extensión de TTPS Ruby 2022 - Gregorio Maclen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Instalación y ejecución
 
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+1. Clonar el repositorio
+2. Instalar las dependencias con:
+   ```bash
+   bundle install
+   ```
+3. Crear la base de datos con:
+   ```bash
+   rails db:create
+   ```
+4. Ejecutar las migraciones con:
+   ```bash
+   rails db:migrate
+   ```
+5. Cargar los datos de prueba con:
+   ```bash
+   rails db:seed
+   ```
+6. Ejecutar el servidor con:
+   ```bash
+   rails server
+   ```
+7. Se puede acceder con los siguientes usuarios:
+   - Usuario editor 1:
+     - Email: juan@gmail.com
+     - Contraseña: Ruby2022
+   - Usuario editor 2:
+     - Email: carlos@gmail.com
+     - Contraseña: Ruby2022
+   - Usuario lector:
+     - Email: marcos@gmail.com
+     - Contraseña: Ruby2022
