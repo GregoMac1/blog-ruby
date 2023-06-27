@@ -5,7 +5,6 @@ export default class extends Controller {
   connect() {
     const commentsBlock = document.getElementById("comments");
     const postId = commentsBlock.getAttribute("data-post-id");
-    console.log(postId);
 
     createConsumer().subscriptions.create(
       {
