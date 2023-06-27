@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
       ActionCable.server.broadcast "post_#{@post.id}", {
         action: 'new_comment',
         comment: @comment,
-        html: render(
+        html: render_to_string(
           partial: 'comments/comment',
           locals: { comment: @comment }
         ),

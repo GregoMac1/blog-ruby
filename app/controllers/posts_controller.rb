@@ -42,12 +42,12 @@ class PostsController < ApplicationController
       ActionCable.server.broadcast "posts", {
         action: 'new_post',
         post: @post,
-        html: render(
+        html: render_to_string(
           partial: 'posts/post',
           locals: { post: @post }
         ),
       }
-      redirect_to @post
+      redirect_to posts_url
     else
       render :new, status: :unprocessable_entity
     end
