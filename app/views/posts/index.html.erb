@@ -9,6 +9,9 @@
   <% end %>
 </div>
 <hr>
+<% if @posts.empty? %>
+  <p class="alert alert-warning">No hay noticias.</p>
+<% end %>
 <div id="posts" class="card-group" style="gap: 10px;">
   <%= render @posts %>
 </div>

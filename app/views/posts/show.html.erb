@@ -48,7 +48,7 @@
 <% if @post.comments.empty? %>
   <p class="text-muted">No hay comentarios</p>
 <% end %>
-<div id="comments" data-controller="comments" data-post-id="<%= @post.id %>" data-current-user="<%= Current.user.id %>">
+<div id="comments" data-controller="comments" data-post-id="<%= @post.id %>" data-current-user="<%= if Current.user then Current.user.id else 0 end %>">
   <div id="comments-list">
     <%= render @post.comments %>
   </div>
